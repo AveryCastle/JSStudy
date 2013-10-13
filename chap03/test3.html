@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<title>javascript chapter3</title>
+	<script type="text/javascript">
+
+	var empty_object = {};
+
+	var stooge = {
+		"first-name" : "Jerome",
+		"last-name"	: "Howard"
+	};
+
+	var flight = {
+		airline : "Oceanic",
+		number	: 815,
+		departure	: {
+			IATA : "SYD",
+			time : "2013-10-11 19:20",
+			city : "Seoul"
+		},
+		arrival : {
+			IATA : "LAX",
+			time : "2013-10-12 08:30",
+			city : "Los Angeles"
+		}
+	};
+
+	alert( stooge["first-name"] + " : " + flight.airline + " : " + flight.departure.time + " : " + flight.departure["city"]);
+	alert( flight.number.city || "i dont know");
+	document.write(stooge['middle-name'] + '<br />' + flight.equipment + "<br />");
+	document.write( flight.equipment && flight.equipment.model);
+
+	stooge['middle-name'] = 'Lester';
+	flight.equipment = {
+		model : 'Boeing 777'
+	};
+	flight.status = 'overdue';
+
+	document.write('<hr>');
+	document.write(stooge['middle-name'] + '<br />' + flight.equipment + "<br />");
+	document.write(flight.equipment.model + '<br />' + flight.status);
+
+	var x = stooge;
+	x.nickname = 'PIKANPIE';
+	stooge.nickname = 'ORANGE';
+
+	document.write('<hr>');
+	document.write(x.nickname + '<br />' + stooge.nickname);
+
+
+	// if( typeof Object.create != 'function'){
+	// 	Object.create = function(o){
+	// 		var F = function(){};
+	// 		F.prototype = o;
+	// 		return new F();
+	// 	}
+	// }
+
+	var another_stooge = Object.create(stooge);
+
+	another_stooge['first-name'] = 'Harry';
+	another_stooge['middle-name'] = 'Moses';
+	another_stooge.nickname = 'Moe';
+
+	document.write('<hr />');
+	document.write(another_stooge['first-name'] + '<br />' + another_stooge['middle-name'] + '<br />' + another_stooge.nickname);
+
+
+	stooge.profession = 'actor';
+	another_stooge.profession = 'singer';
+	document.write('<hr />');
+	document.write(stooge.profession + ' : ' + another_stooge.profession);
+	</script>
+</head>
+<body>
+
+</body>
+</html>
