@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -72,6 +73,41 @@
 	another_stooge.profession = 'singer';
 	document.write('<hr />');
 	document.write(stooge.profession + ' : ' + another_stooge.profession);
+
+	document.write( '<br />' + 'airline : ' + typeof(flight.airline));
+	document.write( '<br />' + 'number : ' + typeof(flight.number));
+	document.write( '<br />' + 'flight.departure : ' + typeof(flight.departure));
+	document.write( '<br />' + 'flight.toString : ' + typeof(flight.toString));
+
+	document.write( '<br />' + 'flight.hasOwn_number : ' + flight.hasOwnProperty('number'));
+	document.write( '<br />' + 'flight.hasOwn_constructor : ' + flight.hasOwnProperty('contructor'));
+
+	// 07. Enumeration
+	document.writeln('<hr /> <h1> 07. Enumeration</h1>');
+	var name;
+	for( name in another_stooge ){
+		if( typeof another_stooge[name]  != 'function'){
+			document.writeln( name + ' : ' + another_stooge[name] + '<br />');
+		}
+	}
+	document.writeln('<br />');
+
+	var i;
+	var properties = [
+		'first-name' ,
+		'middle-name' ,
+		'last-name'	,
+		'profession'
+	];
+	for (i = 0; i<properties.length; i++){
+		document.writeln(properties[i] + ' : ' + another_stooge[properties[i]]);
+	};
+
+	// 08. Delete
+	document.writeln('<hr /> <h1> 8. Delete</h1>');
+	document.writeln('another_stooge.nickname :' +  another_stooge.nickname + '<br />');
+	delete another_stooge.nickname;
+	document.writeln('another_stooge.nickname :' +  another_stooge.nickname);
 	</script>
 </head>
 <body>
