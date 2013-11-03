@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<title>chap3 test09</title>
+	<script type="text/javascript">
+	var MYAPP = {};
+
+	MYAPP.stooge = {
+		"first-name" : "Jerome",
+		"last-name"	: "Howard"
+	};
+
+	MYAPP.flight = {
+		airline : "Oceanic",
+		number	: 815,
+		departure	: {
+			IATA : "SYD",
+			time : "2013-10-11 19:20",
+			city : "Seoul"
+		},
+		arrival : {
+			IATA : "LAX",
+			time : "2013-10-12 08:30",
+			city : "Los Angeles"
+		}
+	};
+
+	MYAPP.stooge.nickname = 'ERICK';
+	document.writeln('stooge :' + MYAPP.stooge['first-name'] + ' , nickname :' + MYAPP.stooge.nickname);
+
+	var another_stooge = Object.create(MYAPP.stooge);
+
+	document.writeln('another_stooge :' + another_stooge['first-name'] + ' , nickname :' + another_stooge.nickname);
+
+	another_stooge.nickname = 'PIKANPIE';
+	document.writeln('another_stooge :' + another_stooge['first-name'] + ' , nickname :' + another_stooge.nickname);	
+
+	</script>
+</head>
+<body>
+</body>
+</html>

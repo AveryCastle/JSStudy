@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<title>chap4 test10</title>
+	<style>
+	/**{
+		background-color: #d024fe;
+	}*/
+	</style>
+</head>
+<body>
+	<h1> closer test </h1>
+	<p> This chapter is closer test.</p>
+	<script type="text/javascript">
+	var fade = function(node){
+		var level = 1;
+		var step = function(){
+			var hex = level.toString(16);
+			node.style.backgroundColor = '#FFFF' + hex + hex;
+			console.log(' hex : ' + hex );
+			if( level < 15){
+				level += 1;
+				setTimeout( step, 100 );
+			}
+		};
+		setTimeout( step, 100 );
+	};
+
+	fade(document.body) ;
+	</script>
+
+	<div>
+		<ul>
+			<li>a</li>
+			<li>b</li>
+			<li>c</li>
+			<li>d</li>
+			<li>e</li>
+			<li>f</li>			
+		</ul>
+	</div>
+	<script type="text/javascript">
+	var add_the_handelr = function(nodes){
+		var i = 0;
+		for ( i = 0 ; i < nodes.length ; ++i) {
+			nodes[i].onclick = function(i){
+				return function(e){
+					alert(i);
+				};
+			}(i);
+		};
+	};
+	add_the_handelr( document.getElementsByTagName('li'));
+	</script>
+</body>
+</html>

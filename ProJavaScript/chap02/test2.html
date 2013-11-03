@@ -1,0 +1,326 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="en">
+	<title>code 2</title>
+	<script type="text/javascript">
+		// window.onload = function(){
+		// 	// code 2-1
+		// 	var obj = new Object();
+
+		// 	var objRef = obj;
+
+		// 	obj.oneProperty = true;
+
+		// 	// alert( obj.oneProperty == objRef.oneProperty );
+
+		// 	// code 2-2
+		// 	var items = new Array("one", "two", "three", "four", "five");
+		// 	var itemsRef = items;
+		// 	items.push("six");
+		// 	items.push("seven");
+
+		// 	// alert("items.length : " + items.length + ", " + (items.length == items.length) + ", itemsRef == items :" + (items == itemsRef));
+
+		// 	for( var item in items ){
+		// 		console.log(item + ' : ' + items[item] );
+		// 	}
+
+		// 	for( var item in itemsRef ){
+		// 		console.log(item + ' : ' + itemsRef[item]);	
+		// 	}
+
+		// 	// code 2-4
+		// 	items  += "ing";
+		// 	// alert( items == itemsRef);
+
+		// 	console.log('=====================================');
+		// 	for( var item in items ){
+		// 		console.log(item + ' : ' + items[item]);
+		// 	}
+
+		// 	for( var item in itemsRef ){
+		// 		console.log(item + ' : ' + itemsRef[item]);
+		// 	}
+
+		// 	// code 2-5
+		// 	function sendMessage( msg, obj ){
+		// 		if( arguments.length == 2 ){
+		// 			obj.alert( msg );
+		// 		}else{
+		// 			alert(msg);
+		// 		}
+		// 	}
+
+		// 	//sendMessage('Hello! javascript');
+		// 	//sendMessage('How are you?', window);
+		// 	console.log('=====================================');	
+			
+		// 	var arr = makeArray([1,2,3,4,5], 'pikanpie', 100);
+		// 	// alert( arr.length );
+
+		// 	function makeArray(){
+		// 		var arr = [];
+		// 		for (var i = 0; i < arguments.length; i++) {
+		// 			console.log( arguments[i].constructor );
+		// 			arr.push(arguments[i]);
+		// 		}
+		// 		return arr;
+		// 	}
+
+		// 	// code 2-6
+		// 	function displayError(msg){
+		// 		if (typeof msg == 'undefined') {
+		// 			msg = "An Error occured";
+		// 		};
+		// 		alert(msg);
+		// 	}
+
+		// 	//displayError();
+		// 	//displayError("This is a message.");
+
+		// 	var num = '1000';
+
+		// 	// code 2-7
+		// 	// if( typeof num == "string" ){
+		// 	// 	num = parseInt(num);
+		// 	// }
+
+		// 	// if( typeof arr == "string"){
+		// 	// 	arr = arr.split(",");
+		// 	// }
+
+		// 	console.log('=====================================');	
+			
+		// 	// code  2-8
+		// 	if( num.constructor == String ){
+		// 		console.log('num is String');
+		// 		num = parseInt(num);
+		// 	}
+		// 	if( arr.constructor == Array ){
+		// 		console.log( 'arr is Array');
+		// 		arr = arr.join(',');
+		// 	}
+
+		// 	//alert(num);
+		// 	//alert(arr);
+		// 	//alert(items);
+
+		// 	// code 2-9. I don't know how to call it right.
+		// 	console.log('=====================================');
+			
+		// 	function strict( types, args ){
+		// 		if( types.length != args.length ){
+		// 			throw "Invalid number of arguments. Expected " + types.length + ", received " + args.length + " instead.";
+		// 		}
+
+		// 		for (var i = 0; i < args.length; i++) {
+		// 			console.log('args.length : ' + args.length );
+		// 			console.log(args[i].constructor + ' : ' + types[i]);
+		// 			if( args[i].constructor != types[i] ){
+		// 				throw "Invalid number of arguments. Expected " + types[i].name + ", received " + args[i].constructor.name + " instead.";
+		// 			}
+		// 		};
+		// 	}
+
+		// 	var tmp = ["pikanpie", '100', ['a','b','c','d']];
+		// 	function userList( prefix, num, users ){
+		// 		strict( [ String, Number, Array ], arguments);
+
+		// 		for (var i = 0; i < num.length; i++) {
+		// 			alert( prefix + ": " + users[i]);
+		// 		};
+		// 	}
+
+		// 	//userList( 3, tmp, tmp);
+
+		// 	// code 2-13
+		// 	var obj = document.getElementById('main');
+		// 	obj.style.border = "1px solid red";
+
+		// 	setTimeout(function(){
+		// 		obj.style.display = 'none';
+		// 	}, 1000);
+
+		// 	function delayedAlert( msg, time ){
+		// 		setTimeout(function(){
+		// 			alert(msg);
+		// 		}, time);
+		// 	}
+
+		// 	//delayedAlert('welcome~~ ', 2000);
+
+
+		// 	// code 2-14
+		// 	function addGenerator( num ){
+		// 		return function(toAdd){
+		// 			return num + toAdd;
+		// 		};
+		// 	}
+
+		// 	var addFive = addGenerator(5);
+		// 	//alert( addFive(4) );
+
+		// 	//var element = document.getElementsByTagName('h1');
+		// 	var element = document.getElementById('title');
+		// 	alert(element);
+		// 	element.onclick = function(){
+		// 		location.href = "http://www.naver.com";
+		// 	};
+
+		// };
+
+		// // code 2-15
+		// (function(){
+		// 	var msg = "Thanks for visiting!";
+		// 	window.onunload = function(){
+		// 		alert(msg);
+		// 	};
+		// }());
+
+	// code 2-16
+	// window.onload = function(){
+	// 	var obj = document.getElementById('main');
+
+	// 	var items = [ 'click', 'keypress'];
+	// 	console.log(items[0]);
+	// 	for (var i = 0; i < items.length; i++) {
+	// 		obj['on'+items[i]] = function(){
+	// 			alert('Thanks for your ' + items[i]);
+	// 		};
+	// 	}
+	// };
+
+
+	// code 2-17
+	// var obj = {
+	// 	yes : function(){
+	// 		this.val = true;
+	// 	},
+	// 	no : function(){
+	// 		this.val = false;
+	// 	}
+	// };
+
+	// console.log(obj.val == null);
+
+	// obj.yes();
+	// console.log(obj.val == true);
+
+	// window.no = obj.no;
+	// console.log( obj.val == true );
+	// console.log( window.val == null );
+	// window.no();
+
+	// console.log(obj.val == true);
+	// console.log(window.val == false);
+
+	// code 2-18
+	// window.onload = function(){
+	// 	function changeColor( color , border ){
+	// 		this.style.color = color;
+	// 		this.style.border = border;
+	// 	}
+
+	// 	//changeColor('green');
+
+	// 	var main = document.getElementById('main');
+	// 	changeColor.call( main, 'orange', '1px solid red');
+
+	// 	function setBodyColor(){
+	// 		changeColor.apply(document.body, arguments);
+	// 	}
+
+	// 	setBodyColor( 'green', '2px solid blue');
+	// };
+
+
+	// code 2-20
+	// function User(name){
+	// 	this.name = name;
+	// }
+
+	// var me = new User('My Name');
+	// console.log( me.name == 'My Name');
+
+	// console.log( me.constructor == User );
+
+	// User('Test');
+	// console.log( window.name == 'Test');
+
+
+	// code 2-22
+	// function User( name, age ){
+	// 	this.name = name;
+	// 	this.age = age;
+	// }
+
+	// User.prototype.getName = function(){
+	// 	return this.name;
+	// }
+	// User.prototype.getAge = function(){
+	// 	return this.age;
+	// }
+
+	// var user = new User('Seong JooHyun', 29 );
+	// console.log(user.getName() + ' : ' + user.getAge() );
+
+
+	// code 2-23, I don't know
+		// var classes = new Classroom(['Jhon', 'Bob', 'Clock'], 'Miss. Seong');
+
+		// function Classroom( students, teacher ){		
+
+		// 	this.students = students;
+		// 	this.teacher = teacher;
+
+		// 	function disp(){
+		// 		console.log( this.students.join(', ')); // <-- error occured point
+		// 	}
+
+		// 	disp();
+		// }
+		//classes.disp();
+
+
+		// code 2-25, I don't know . 예제랑 동일하게 하면 에러 발생함.
+		function User( properties ){
+			for( var i in properties ){
+				//(function(){
+					//console.log(i);
+					this["get" + i] = function(){
+						//console.log(properties[i]);
+						return properties[i];
+					};
+
+					this["set" + i] = function(val){
+						properties[i] = val;
+					};
+				//})();
+			}
+		}
+
+		var user = new User({
+			name : "Bob",
+			age  : 44
+		});
+
+		user.setname('pikanpie');
+
+		console.log( user.name == null);
+		console.log( user.getname() == 'Bob' );
+		console.log( user.getage() == 44 );
+		console.log( user.getname() == 'pikanpie');
+
+		user.setage(22);
+		console.log( user.getage() == 22 );
+
+	</script>
+</head>
+<body>
+	<h1 id="title">Pro JavaScript Technick</h1>
+	<div>
+		<p id="main">abcdefg hijklmnop qrstuv wxyz</p>
+	<div>
+</body>
+</html>

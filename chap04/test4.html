@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<title>chap4</title>
+	<script>
+	var add = function( a, b ){
+		return a +  b;
+	};
+
+	var myObject = {
+		value : 0,
+		increment: function(inc){
+			this.value += typeof inc === 'number' ? inc : 1;
+		},
+		getValue : function(){
+			return this.value;
+		}
+	};
+
+	document.write( '<h1>chap4 call</h1>' );
+
+	// 메소드 호출 패턴
+	document.body.innerHTML += '<h3>method call pattern</h3>';
+	myObject.increment();
+	document.body.innerHTML += '<div>' + myObject.value + '</div>';
+	myObject.increment(3);
+	document.body.innerHTML += '<div>' + myObject.value + '</div>';
+
+
+	// 함수 호출 패턴
+	document.body.innerHTML += '<h3>function call pattern</h3>';
+	var sum = add( 3, 4);
+	document.body.innerHTML += '<div> add( 3, 4 ) : ' + sum + '</div>';
+
+	myObject.double = function(){
+		var that = this;
+
+		var helper = function(){
+			that.value = add( that.value, that.value );
+		};
+
+		helper();
+	};
+
+	myObject.double();
+	document.body.innerHTML += '<div>' + myObject.getValue() + '</div>';
+
+	// 생성자 호출 패턴
+	document.body.innerHTML += '<h3>conductor call pattern</h3>';
+	var Quo = function( string ){
+		this.status = string;
+	};
+	Quo.prototype.get_status = function(){
+		return this.status;
+	};
+
+	var myQuo = new Quo('confused');
+	document.body.innerHTML += '<div> myQuo.status : ' + myQuo.get_status() + '</div>';
+
+
+	// apply 호출 패턴
+	document.body.innerHTML += '<h3>apply call pattern</h3>';
+	var array = [ 3, 8 ];
+	var sum = add.apply( null, array );
+	document.body.innerHTML += '<div>' + sum + '</div>';
+
+	var statusObject = {
+		status : 'A-OK'
+	};
+	var status = Quo.prototype.get_status.apply(statusObject);
+	document.body.innerHTML += '<div> myQuo.status : ' + myQuo.get_status() + ', statusObject.status : '+ status +'</div>';
+
+	</script>
+</head>
+<body>
+</body>
+</html>

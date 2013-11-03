@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<title>chap4 test09</title>
+	<script type="text/javascript">
+	var foo = function(){
+		var a = 3, b = 5;
+
+		var bar = function(){
+			var b = 7, c = 11;
+
+			return a += b + c;
+		};
+
+		alert( bar() );
+		alert( 'a :' + a + ', b:'+b);
+	};
+
+	alert( 'foo : ' + foo() );
+	</script>
+</head>
+<body>
+</body>
+</html>

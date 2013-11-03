@@ -1,116 +1,141 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8">
 	<title>javascript chapter3</title>
-	<script type="text/javascript">
-
-	var empty_object = {};
+	<script>
+	var empth_object = {};
 
 	var stooge = {
 		"first-name" : "Jerome",
-		"last-name"	: "Howard"
+		"last-name"  : "Howard"
 	};
 
 	var flight = {
 		airline : "Oceanic",
-		number	: 815,
-		departure	: {
+		number  : 815,
+		departure : {
 			IATA : "SYD",
-			time : "2013-10-11 19:20",
-			city : "Seoul"
+			time : "2013-09-22 14:55",
+			city : "Sydney"
 		},
 		arrival : {
 			IATA : "LAX",
-			time : "2013-10-12 08:30",
+			time : "2013-09-23 10:42",
 			city : "Los Angeles"
 		}
 	};
 
-	alert( stooge["first-name"] + " : " + flight.airline + " : " + flight.departure.time + " : " + flight.departure["city"]);
-	alert( flight.number.city || "i dont know");
-	document.write(stooge['middle-name'] + '<br />' + flight.equipment + "<br />");
-	document.write( flight.equipment && flight.equipment.model);
+	document.write('<h1>' + stooge["first-name"] + ' ' +stooge["last-name"] + '</h1>');
+	window.document.body.innerHTML += '<div>' + flight.departure.city + '</div>';
+	document.body.innerHTML += '<div>' + (stooge["middle-name"] || "(none)") + '</div>';
+	document.body.innerHTML += '<div>' + (flight.equipment && flight.equipment.model) + '</div>';
 
-	stooge['middle-name'] = 'Lester';
+	// 03. 속성의 갱신
+	stooge['first-name'] = 'Jeromen';
+	stooge['middle-name'] = 'Curly';
+
 	flight.equipment = {
 		model : 'Boeing 777'
 	};
 	flight.status = 'overdue';
 
-	document.write('<hr>');
-	document.write(stooge['middle-name'] + '<br />' + flight.equipment + "<br />");
-	document.write(flight.equipment.model + '<br />' + flight.status);
+	document.body.innerHTML += '<hr />';
+	document.body.innerHTML += '<h1>' + stooge['first-name']+' '+stooge['middle-name']+ ' ' + stooge['last-name']+ '</h1>';
+	document.body.innerHTML += '<div>' + (stooge["middle-name"] || "(none)") + '</div>';
+	document.body.innerHTML += '<div> flight model : ' + flight.equipment.model + '</div>';
+	document.body.innerHTML += '<div> status : ' + flight.status + '</div>';
 
+
+	// 04. 참조
 	var x = stooge;
-	x.nickname = 'PIKANPIE';
-	stooge.nickname = 'ORANGE';
+	x.nickname = 'Pikanpie';
+	document.body.innerHTML += '<hr />';
+	document.body.innerHTML += '<div>' + ( x.nickname == stooge.nickname ) + '</div>';
+	var nick = stooge.nickname;
+	document.body.innerHTML += '<div>' + ( x.nickname == nick ) + ' ' + stooge.nickname + '</div>';
 
-	document.write('<hr>');
-	document.write(x.nickname + '<br />' + stooge.nickname);
+	var a = {}, b = {}, c = {};
+	document.body.innerHTML += '<hr />';
+	document.body.innerHTML += '<div>' + ( a == b )+ ' : ' + ( b == c ) + ' : ' + (a == c) + ' > ' + (a.constructor == b.constructor) + ' : ' + a.constructor + '</div>';
 
 
-	// if( typeof Object.create != 'function'){
-	// 	Object.create = function(o){
-	// 		var F = function(){};
-	// 		F.prototype = o;
-	// 		return new F();
-	// 	}
-	// }
+	a = b = c;
+	document.body.innerHTML += '<hr />';
+	document.body.innerHTML += '<hr />';
+	document.body.innerHTML += '<div>' + ( a == b )+ ' : ' + ( b == c ) + ' : ' + (a == c) + ' > ' + (a.constructor == b.constructor) + ' : ' + a.constructor + '</div>';
+
+
+	// 05. Prototype
+	document.body.innerHTML += '<hr />' + '<h1> 05. Prototype </h1>';
+	if( typeof Object.create !== 'function' ){
+		console.log( typeof Object.create );
+		Object.create = function(o){
+			console.log(o);
+			var F = function(){};
+			F.prototype = o;
+			return new F();
+		};
+	}
 
 	var another_stooge = Object.create(stooge);
+	another_stooge['first-name'] = 'JooHyun';
+	another_stooge['middle-name'] = 'Estel';
+	another_stooge['last-name'] = 'Seong';
+	document.body.innerHTML += '<div>' + another_stooge['first-name'] + ' ' + another_stooge['last-name'] + ' ' + another_stooge['middle-name'] + '</div>';
 
-	another_stooge['first-name'] = 'Harry';
-	another_stooge['middle-name'] = 'Moses';
-	another_stooge.nickname = 'Moe';
-
-	document.write('<hr />');
-	document.write(another_stooge['first-name'] + '<br />' + another_stooge['middle-name'] + '<br />' + another_stooge.nickname);
+	stooge.professtion = 'actor';
+	another_stooge.professtion = 'programmer';
+	document.body.innerHTML += '<div>' + ( stooge.professtion.constructor == another_stooge.professtion.constructor ) + ' : ' + another_stooge.professtion.constructor + ' : ' + another_stooge.professtion + '</div>';
 
 
-	stooge.profession = 'actor';
-	another_stooge.profession = 'singer';
-	document.write('<hr />');
-	document.write(stooge.profession + ' : ' + another_stooge.profession);
 
-	document.write( '<br />' + 'airline : ' + typeof(flight.airline));
-	document.write( '<br />' + 'number : ' + typeof(flight.number));
-	document.write( '<br />' + 'flight.departure : ' + typeof(flight.departure));
-	document.write( '<br />' + 'flight.toString : ' + typeof(flight.toString));
+	// 06. reflection
+	document.body.innerHTML += '<hr />' + '<h1> 06. Reflection </h1>';
+	document.body.innerHTML += '<div>' + another_stooge.hasOwnProperty('first-name') + '</div>';
+	document.body.innerHTML += '<div> flight.status : ' + typeof( flight.status ) + '</div>';
 
-	document.write( '<br />' + 'flight.hasOwn_number : ' + flight.hasOwnProperty('number'));
-	document.write( '<br />' + 'flight.hasOwn_constructor : ' + flight.hasOwnProperty('contructor'));
+
 
 	// 07. Enumeration
-	document.writeln('<hr /> <h1> 07. Enumeration</h1>');
+	document.body.innerHTML += '<hr />' + '<h1> 07. Enumeration </h1>';
 	var name;
 	for( name in another_stooge ){
-		if( typeof another_stooge[name]  != 'function'){
-			document.writeln( name + ' : ' + another_stooge[name] + '<br />');
+		if( typeof another_stooge[name] != 'function' ){
+			document.body.innerHTML += '<div>'+ name + ' : ' + another_stooge[name] + '</div>';
 		}
 	}
-	document.writeln('<br />');
 
 	var i;
 	var properties = [
-		'first-name' ,
-		'middle-name' ,
-		'last-name'	,
-		'profession'
+		'first-name', 
+		'last-name',
+		'middle-name',		
+		'nickname',
+		'professtion'
 	];
-	for (i = 0; i<properties.length; i++){
-		document.writeln(properties[i] + ' : ' + another_stooge[properties[i]]);
-	};
+
+	document.body.innerHTML += '<br />';
+	for( i=0; i<properties.length; i++ ){
+		document.body.innerHTML += '<div>' + properties[i] + ' : ' + another_stooge[properties[i]] + '</div>';
+	}
+
 
 	// 08. Delete
-	document.writeln('<hr /> <h1> 8. Delete</h1>');
-	document.writeln('another_stooge.nickname :' +  another_stooge.nickname + '<br />');
-	delete another_stooge.nickname;
-	document.writeln('another_stooge.nickname :' +  another_stooge.nickname);
+	document.body.innerHTML += '<hr />' + '<div> 08. Delete </div>';
+	document.body.innerHTML += '<div> stooge.professtion :' + stooge.professtion + ', another_stooge.professtion :' + another_stooge.professtion + '</div><br />';
+
+	delete another_stooge.professtion;
+	document.body.innerHTML += '<div> After delete another_stooge.professtion property </div>';
+	document.body.innerHTML += '<div> stooge.professtion :' + stooge.professtion + ', another_stooge.professtion :' + another_stooge.professtion + '</div>';	
+
+
+
+
+
+
 	</script>
 </head>
 <body>
-
 </body>
 </html>
